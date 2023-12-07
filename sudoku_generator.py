@@ -10,12 +10,17 @@ class Sudoku:
         return self._rows
 
     def get_columns(self):
-        return self._rows
-        # rows = get_rows()
-        # columns = []
-        # for _ in range(len(rows)):
-        #     columns += [[]]
-        # for row in rows:
+        rows = self.get_rows()
+        n = len(rows)
+        columns = []
+        for _ in range(n):
+            columns += [[]]
+        for i in range(n):
+            for j in range(n):
+                columns[j].append(rows[i][j])
+            # import pdb; pdb.set_trace()
+
+        return columns
 
     def print(self):
         rows = self.get_rows()
