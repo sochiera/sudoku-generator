@@ -1,0 +1,38 @@
+from sudoku_validate import is_sudoku_correct
+
+class Sudoku:
+    def __init__(self, n):
+        self._rows = []
+        for _ in range(n):
+            self._rows += [[i+1 for i in range(n)]]
+
+    def get_rows(self):
+        return self._rows
+
+    def get_columns(self):
+        return self._rows
+        # rows = get_rows()
+        # columns = []
+        # for _ in range(len(rows)):
+        #     columns += [[]]
+        # for row in rows:
+
+    def print(self):
+        rows = self.get_rows()
+        n = len(rows)
+        print('-' * (n*4 + 1))
+        for r in self.get_rows():
+            print("| " + ' | '.join(str(k) for k in r) + " |")
+            print('-' * (n*4 + 1))
+
+    def __str__(self):
+        return str(self.get_rows())
+
+
+
+def generate_sudoku(n):
+    return Sudoku(n)
+
+if __name__ == '__main__':
+    s = Sudoku(2)
+    s.print()
