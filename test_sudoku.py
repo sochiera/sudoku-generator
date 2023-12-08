@@ -64,10 +64,11 @@ class TestSudokuGenerate(unittest.TestCase):
         self.assertEqual(rows[0][2], collumns[2][0])
         self.assertEqual(rows[3][1], collumns[1][3])
 
-# implementation needed
-    @unittest.expectedFailure
-    def test_generate_size_2_sudoku(self):
+    def test_generate_small_sudoku(self):
         check_sudoku(generate_sudoku(2))
+        check_sudoku(generate_sudoku(3))
+        check_sudoku(generate_sudoku(4))
+
 
 
 if __name__ == '__main__':

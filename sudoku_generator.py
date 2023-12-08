@@ -3,12 +3,13 @@ from sudoku_validate import is_sudoku_correct
 class Sudoku:
     def __init__(self, n):
         self._rows = []
-        for _ in range(n):
-            self._rows += [[i+1 for i in range(n)]]
+        for i in range(n):
+            self._rows += [[(j+i)%n +1 for j in range(n)]]
 
     def get_rows(self):
         return self._rows
 
+# what about using matrix?
     def get_columns(self):
         rows = self.get_rows()
         n = len(rows)
