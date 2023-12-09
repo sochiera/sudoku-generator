@@ -1,5 +1,6 @@
 def check_uniqueness(row):
     numbers = {k for k in row}
+    # import pdb; pdb.set_trace()
     assert(len(numbers) == len(row))
 
 def check_ranges(row):

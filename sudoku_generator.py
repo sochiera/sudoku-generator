@@ -1,7 +1,9 @@
 from sudoku_validate import is_sudoku_correct
+import numpy as np
 
 class Sudoku:
     def __init__(self, n):
+        # what about using numpy array/matrix here too?
         self._rows = []
         for i in range(n):
             self._rows += [[(j+i)%n +1 for j in range(n)]]
@@ -9,19 +11,9 @@ class Sudoku:
     def get_rows(self):
         return self._rows
 
-# what about using matrix?
     def get_columns(self):
-        rows = self.get_rows()
-        n = len(rows)
-        columns = []
-        for _ in range(n):
-            columns += [[]]
-        for i in range(n):
-            for j in range(n):
-                columns[j].append(rows[i][j])
-            # import pdb; pdb.set_trace()
-
-        return columns
+        matrix = np.array(self._rows)
+        return matrix.transpose().tolist()
 
     def print(self):
         rows = self.get_rows()
@@ -33,7 +25,6 @@ class Sudoku:
 
     def __str__(self):
         return str(self.get_rows())
-
 
 
 def generate_sudoku(n):
