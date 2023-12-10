@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import Mock
-from sudoku_generator import generate_sudoku
+from sudoku_generator import Sudoku, generate_sudoku
 from sudoku_validate import (
     check_uniqueness,
     check_ranges,
@@ -69,6 +69,23 @@ class TestSudokuGenerate(unittest.TestCase):
         check_sudoku(generate_sudoku(3))
         check_sudoku(generate_sudoku(4))
 
+
+class TestSudoku(unittest.TestCase):
+    @unittest.skip("Implementation needed")
+    def test_sudoku_gets_correct_squares(self):
+        sudoku = Sudoku([
+            [ 1,  2,  3,  4],
+            [ 5,  6,  7,  8],
+            [ 9, 10, 11, 12],
+            [13, 14, 15, 16]])
+        squares = {tuple(sq) for sq in sudoku.get_squares()}
+        expected_squares = {
+            ( 1,  2,  5,  6),
+            ( 3,  4,  7,  8),
+            ( 9, 10, 13, 14),
+            (11, 12, 15, 16)}
+
+        self.assertEqual(squares, expected_squares)
 
 
 if __name__ == '__main__':

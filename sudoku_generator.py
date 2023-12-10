@@ -13,6 +13,9 @@ class Sudoku:
         matrix = np.array(self._rows)
         return matrix.transpose().tolist()
 
+    def get_squares(self):
+        return self._rows
+
     def print(self):
         rows = self.get_rows()
         n = len(rows)
