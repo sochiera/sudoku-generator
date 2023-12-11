@@ -71,7 +71,6 @@ class TestSudokuGenerate(unittest.TestCase):
 
 
 class TestSudoku(unittest.TestCase):
-    @unittest.skip("Implementation needed")
     def test_sudoku_gets_correct_squares(self):
         sudoku = Sudoku([
             [ 1,  2,  3,  4],
