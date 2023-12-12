@@ -71,7 +71,7 @@ class TestSudokuGenerate(unittest.TestCase):
 
 
 class TestSudoku(unittest.TestCase):
-    def test_sudoku_gets_correct_squares(self):
+    def test_sudoku_gets_correct_squares_for_size_4_sudoku(self):
         sudoku = Sudoku([
             [ 1,  2,  3,  4],
             [ 5,  6,  7,  8],
@@ -83,7 +83,25 @@ class TestSudoku(unittest.TestCase):
             ( 3,  4,  7,  8),
             ( 9, 10, 13, 14),
             (11, 12, 15, 16)}
+        self.assertEqual(squares, expected_squares)
 
+    def test_sudoku_gets_correct_squares_for_size_9_sudoku(self):
+        sudoku = Sudoku([
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            [1, 2, 3, 4, 5, 6, 7, 8, 9]])
+        squares = {tuple(sq) for sq in sudoku.get_squares()}
+        expected_squares = {
+            (1, 2, 3, 1, 2, 3, 1, 2, 3),
+            (4, 5, 6, 4, 5, 6, 4, 5, 6),
+            (7, 8, 9, 7, 8, 9, 7, 8, 9)
+        }
         self.assertEqual(squares, expected_squares)
 
 

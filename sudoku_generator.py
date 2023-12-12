@@ -1,6 +1,6 @@
 from sudoku_validate import is_sudoku_correct
 import numpy as np
-from math import floor
+from math import floor, sqrt
 
 class Sudoku:
     def __init__(self, rows):
@@ -16,11 +16,12 @@ class Sudoku:
 
     def get_squares(self):
         n = len(self._rows)
-        k = n/2
-        squares = [
-            [[], []],
-            [[], []]
-        ]
+        k = floor(sqrt(n))
+        squares = []
+        for i in range(k):
+            squares += [[]]
+            for j in range(k):
+                squares[i] += [[]]
         for i in range(n):
             for j in range(n):
                 squares[floor(i/k)][floor(j/k)].append(self._rows[i][j])
