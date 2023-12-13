@@ -49,6 +49,29 @@ class TestSudokuValidate(unittest.TestCase):
         self.assertRaises(AssertionError, check_sudoku, invalid_rows_sudoku_mock)
         self.assertRaises(AssertionError, check_sudoku, invalid_columns_sudoku_mock)
 
+    @unittest.skip("not yet implemented")
+    def test_check_squares_uniqueness(self):
+        ok_rows = [
+            [1,2,3,4],
+            [2,3,4,1],
+            [3,4,1,2],
+            [4,1,2,3],
+        ]
+        not_ok_squares = [
+            [1,1,1,1],
+            [2,2,2,2],
+            [3,3,3,3],
+            [4,4,4,4],
+        ]
+        sudoku_mock = Mock(**{
+            'get_rows.return_value': ok_rows,
+            'get_columns.return_value': ok_rows,
+            'get_squares.return_value': not_ok_squares,
+        })
+
+        self.assertRaises(AssertionError, check_sudoku, sudoku_mock)
+
+
 class TestSudokuGenerate(unittest.TestCase):
     def test_generate_size_1_sudoku(self):
         self.assertEqual(generate_sudoku(1).get_rows(), [[1]])
