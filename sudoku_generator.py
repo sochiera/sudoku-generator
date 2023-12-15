@@ -2,10 +2,17 @@ from sudoku_validate import is_sudoku_correct
 import numpy as np
 from math import floor, sqrt
 
+def is_power_of_natural(n):
+    k = floor(sqrt(n))
+    return k*k == n
+
 class Sudoku:
     def __init__(self, rows):
         # what about using numpy array/matrix here too?
         self._rows = rows
+
+    def is_squarable(self):
+        return is_power_of_natural(len(self._rows))
 
     def get_rows(self):
         return self._rows
@@ -17,6 +24,8 @@ class Sudoku:
     def get_squares(self):
         n = len(self._rows)
         k = floor(sqrt(n))
+        if k*k != n:
+            return []
         squares = []
         for i in range(k):
             squares += [[]]

@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import Mock
-from sudoku_generator import Sudoku, generate_sudoku
+from sudoku_generator import Sudoku, generate_sudoku, is_power_of_natural
 from sudoku_validate import (
     check_uniqueness,
     check_ranges,
@@ -36,18 +36,27 @@ class TestSudokuValidate(unittest.TestCase):
         simple_sudoku_mock = Mock(**{
             'get_rows.return_value': ok_rows,
             'get_columns.return_value': ok_rows,
+            'get_squares.return_value': ok_rows,
         })
         invalid_rows_sudoku_mock = Mock(**{
             'get_rows.return_value': conflict_rows,
             'get_columns.return_value': ok_rows,
+            'get_squares.return_value': ok_rows,
         })
         invalid_columns_sudoku_mock = Mock(**{
             'get_rows.return_value': ok_rows,
             'get_columns.return_value': conflict_rows,
+            'get_squares.return_value': ok_rows,
+        })
+        invalid_squares_sudoku_mock = Mock(**{
+            'get_rows.return_value': ok_rows,
+            'get_columns.return_value': ok_rows,
+            'get_squares.return_value': conflict_rows,
         })
         check_sudoku(simple_sudoku_mock)
         self.assertRaises(AssertionError, check_sudoku, invalid_rows_sudoku_mock)
         self.assertRaises(AssertionError, check_sudoku, invalid_columns_sudoku_mock)
+        # self.assertRaises(AssertionError, check_sudoku, invalid_squares_sudoku_mock)
 
     @unittest.skip("not yet implemented")
     def test_check_squares_uniqueness(self):
@@ -94,6 +103,12 @@ class TestSudokuGenerate(unittest.TestCase):
 
 
 class TestSudoku(unittest.TestCase):
+    def test_is_power_of_natural(self):
+        powers_of_naturals = [1,4,9,16,25]
+        for n in range(1,30):
+            self.assertEqual(is_power_of_natural(n), (n in powers_of_naturals))
+
+
     def test_sudoku_gets_correct_squares_for_size_4_sudoku(self):
         sudoku = Sudoku([
             [ 1,  2,  3,  4],

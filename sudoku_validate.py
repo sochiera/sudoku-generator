@@ -1,6 +1,7 @@
+from math import floor, sqrt
+
 def check_uniqueness(row):
     numbers = {k for k in row}
-    # import pdb; pdb.set_trace()
     assert(len(numbers) == len(row))
 
 def check_ranges(row):
@@ -20,7 +21,8 @@ def check_sudoku(sudoku):
             check_ranges(row)
     check_rows(sudoku.get_rows())
     check_rows(sudoku.get_columns())
-
+    # if sudoku.is_squarable():
+    #     check_rows(sudoku.get_squares())
 
 
 def is_sudoku_correct(sudoku):
