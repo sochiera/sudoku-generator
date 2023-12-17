@@ -21,8 +21,8 @@ def check_sudoku(sudoku):
             check_ranges(row)
     check_rows(sudoku.get_rows())
     check_rows(sudoku.get_columns())
-    # if sudoku.is_squarable():
-    #     check_rows(sudoku.get_squares())
+    if sudoku.is_squarable():
+        check_rows(sudoku.get_squares())
 
 
 def is_sudoku_correct(sudoku):

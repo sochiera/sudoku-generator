@@ -56,9 +56,8 @@ class TestSudokuValidate(unittest.TestCase):
         check_sudoku(simple_sudoku_mock)
         self.assertRaises(AssertionError, check_sudoku, invalid_rows_sudoku_mock)
         self.assertRaises(AssertionError, check_sudoku, invalid_columns_sudoku_mock)
-        # self.assertRaises(AssertionError, check_sudoku, invalid_squares_sudoku_mock)
+        self.assertRaises(AssertionError, check_sudoku, invalid_squares_sudoku_mock)
 
-    @unittest.skip("not yet implemented")
     def test_check_squares_uniqueness(self):
         ok_rows = [
             [1,2,3,4],
@@ -99,7 +98,7 @@ class TestSudokuGenerate(unittest.TestCase):
     def test_generate_small_sudoku(self):
         check_sudoku(generate_sudoku(2))
         check_sudoku(generate_sudoku(3))
-        check_sudoku(generate_sudoku(4))
+        check_sudoku(generate_sudoku(5))
 
 
 class TestSudoku(unittest.TestCase):
