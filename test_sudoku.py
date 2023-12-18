@@ -100,7 +100,6 @@ class TestSudokuGenerate(unittest.TestCase):
         check_sudoku(generate_sudoku(3))
         check_sudoku(generate_sudoku(5))
 
-    @unittest.skip('Work in progress')
     def test_generate_squarable_sudoku(self):
         check_sudoku(generate_sudoku(4))
 

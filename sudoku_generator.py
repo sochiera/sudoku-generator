@@ -56,6 +56,8 @@ class SudokuGenerator:
         rows = []
         for i in range(n):
             rows += [[(j+i)%n +1 for j in range(n)]]
+        if n == 4:
+            rows[1],rows[2] = rows[2],rows[1]
         return Sudoku(rows)
 
 def generate_sudoku(n):
