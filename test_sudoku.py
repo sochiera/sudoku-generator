@@ -103,6 +103,9 @@ class TestSudokuGenerate(unittest.TestCase):
     def test_generate_squarable_sudoku(self):
         check_sudoku(generate_sudoku(4))
 
+    def test_generate_one_real_sudoku(self):
+        check_sudoku(generate_sudoku(9))
+
 
 class TestSudoku(unittest.TestCase):
     def test_is_power_of_natural(self):
