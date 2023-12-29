@@ -55,7 +55,9 @@ class SudokuGenerator:
 
     def generate(self):
         n = self._n
-        rows = [[0]*n]*n
+        rows = []
+        for _ in range(n):
+            rows += [[0]*n]
         return Sudoku(rows)
 
 def generate_sudoku(n):
